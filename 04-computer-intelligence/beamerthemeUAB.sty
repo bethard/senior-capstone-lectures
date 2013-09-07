@@ -1,0 +1,131 @@
+%
+% An unofficial CASC beamer template,
+% written by Adrian Prantl <adrian@llnl.gov>, 2011.
+%
+% Based on "crane" and "orchid" by Till Tantau,
+% licensed under the GPL v2 or later.
+%
+
+\usepackage{microtype}
+\usepackage[LGR,T1]{fontenc}
+\usepackage{tgheros}
+\usepackage[default]{gfsneohellenic}
+\usepackage[scaled]{berasans}
+\usepackage[scaled]{beramono}
+\usepackage[sc]{mathpazo}
+\usepackage{pifont}
+
+\mode<presentation>
+
+\definecolor{uabgreen}{cmyk}{.89,.31,.78,.17}
+\definecolor{uabgold}{cmyk}{.18,.18,.68,0}
+
+\setbeamercolor{structure}{fg=uabgreen}
+\setbeamercolor{alerted text}{fg=uabgold}
+\setbeamerfont{alerted text}{family=\bfseries}
+
+\setbeamercolor{palette primary}{fg=uabgreen}
+\setbeamercolor{palette secondary}{fg=uabgreen}
+\setbeamercolor{palette tertiary}{fg=uabgreen}
+\setbeamercolor{palette quaternary}{fg=uabgreen}
+
+\setbeamercolor{titlelike}{parent=palette quaternary}
+
+\setbeamercolor{block title}{fg=uabgreen}
+\setbeamercolor{block title alerted}{use=alerted text,fg=uabgreen,bg=alerted text.fg!75!bg}
+\setbeamercolor{block title example}{use=example text,fg=uabgreen,bg=example text.fg!75!bg}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!25!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!25!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!25!bg}
+
+\setbeamercolor{sidebar}{}
+
+\setbeamercolor{palette sidebar primary}{fg=uabgreen}
+\setbeamercolor{palette sidebar secondary}{fg=uabgreen!75}
+\setbeamercolor{palette sidebar tertiary}{fg=uabgreen!75}
+\setbeamercolor{palette sidebar quaternary}{fg=uabgreen}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+% Title page: default
+
+\defbeamertemplate*{title page}{defaultcasc}[1][]
+{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    %~ \hfill\includegraphics[height=2em]{uablogo.jpg}\\
+    {\color{uabgreen}\rule{\linewidth}{2pt}}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \\[-1em]
+    {\color{uabgreen}\rule{\linewidth}{2pt}}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    {\footnotesize
+      \includegraphics[height=4em]{uablogo.jpg}
+      \vfill
+      Department of Computer and Information Sciences \\
+      University of Alabama at Birmingham
+    }
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}
+
+% Arrows
+\newcommand{\garrow}{{\color{uabgreen} \Pisymbol{pzd}{217}}}
+\newcommand{\gresarrow}{{\large\color{uabgreen} \Pisymbol{pzd}{229}}}
+\newcommand{\ga}{\hspace{1cm}\garrow}
+\newcommand{\gad}{\begin{rotate}{-90}{\Large\color{uabgreen}\Pisymbol{pzd}{225}}\end{rotate}}
+\newcommand{\fa}{{\color{uabgreen}\Pisymbol{pzd}{225}}}
+\newcommand{\arbox}[1]{
+  \begin{itemize}
+  \item[\fa]\hspace{-.5em}#1
+  \end{itemize}
+}
+\newcommand{\minibox}[2]{\begin{minipage}{#1}\raggedright #2\end{minipage}}
+% Result
+\newcommand{\resbox}[1]{
+  \begin{itemize}
+  \item[\gresarrow] #1
+  \end{itemize}
+}
+
+
+\mode<presentation>
+
+\useoutertheme{infolines}
+\useinnertheme{rectangles}
+
+\usecolortheme{whale}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+\setbeamerfont{block title}{size={}}
+
+\mode
+<all>
