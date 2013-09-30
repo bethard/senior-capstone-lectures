@@ -58,6 +58,10 @@ Berne Convention for the Protection of Literary and Artistic Works
 \begin{itemize}
 \item<2->Yes.
 \end{itemize}
+\item[5.] Can I modify GPL v3 code and distribute under another license?
+\begin{itemize}
+\item<2-> No.
+\end{itemize}
 \item[5.] Can I distribute GPL v3 source and a source with an incompatible license in the same zip file?
 \begin{itemize}
 \item<2->Yes, if they are fully independent.
@@ -116,6 +120,19 @@ How is this situation handled by:
 \item The BSD 2-clause license?
 \item The Apache License, Version 2.0?
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Scenario: Combining code with multiple licenses}
+Your company is writing software that uses several libraries that are under different licenses.
+What license must you use for the overall project if the libraries include:
+\begin{itemize}
+\item GPL + BSD = \alt<2->{GPL}{?}
+\item GPL + Apache2 = \alt<2->{GPL}{?}
+\item BSD + Apache2 = \alt<2->{You decide}{?}
+\item GPL + BSD + Apache2 = \alt<2->{GPL}{?}
+\end{itemize}
+\bigskip
+\uncover<3->{You still must include all secondary licenses!}
 \end{frame}
 
 \end{document}
