@@ -83,4 +83,54 @@ For example:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Distributed Version Control Systems}
+Traditional centralized version control (CVS, SVN, etc.)
+\begin{itemize}
+\item Server holds a single central copy of the code
+\item Clients ``commit'', recording a change in the central copy
+\end{itemize}
+\medskip
+Distributed version control (Git, Mercurial, Bazaar, etc.)
+\begin{itemize}
+\item Every client has a full copy (``clone'') with all history
+\item Changes can be pulled or pushed between any clones
+\pause
+\item[+] Most actions are fast (because they're local)
+\item[+] Most actions do not require an internet connection
+\item[+] Commits can be local
+\item[+] Changes can be shared with selected individuals
+\item[+] Branches are fast and cheap
+\item[-] More time is required for the initial clone
+\item[-] More space is required on the client
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distributed Version Control Systems and Open Source}
+\href{http://www.youtube.com/watch?v=4XpnKHJAok8&t=8m30s}{
+``\ldots if you actually like using CVS\ldots you should be in some mental institution\ldots''}
+\hfill -- Linus Torvalds, creator of Linux and the Git DVCS \\
+\bigskip
+\begin{itemize}
+\item Openness
+\begin{itemize}
+\item Typically web-hosted and visible
+\item Github, Bitbucket are free if your code is publicly visible
+\end{itemize}
+\item Transparency
+\begin{itemize}
+\item Easy tracking of evolution of features across many developers
+\end{itemize}
+\item Rapid prototyping
+\begin{itemize}
+\item Cheap branches allows many different approaches
+\end{itemize}
+\item Community
+\begin{itemize}
+\item All clones are equal (though one may still be the canonical copy)
+\item Better merge support for handling many developers
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
 \end{document}
