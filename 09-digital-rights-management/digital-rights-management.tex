@@ -1,5 +1,14 @@
 \documentclass{beamer}
 \input{../common-definitions.tex}
+\usepackage{listings}
+\lstdefinelanguage{W3C}{
+  keywords={attribute, readonly, void, Constructor, interface, partial, static, bool},
+  keywordstyle=\color{blue},
+  ndkeywords={HTMLSourceElement, HTMLMediaElement, EventHandler, MediaKeys, DOMString, Uint8Array, MediaKeySession, MediaKeyError, EventTarget},
+  ndkeywordstyle=\color{green!50!black},
+  morecomment=[l]{//},
+}
+\lstset{language=W3C}
 
 \title{Open Source Software Development}
 \date{October~$3^{\text{rd}}$,~2013}
@@ -71,7 +80,7 @@ Why has music gone DRM free but movies haven't?
 \end{center}
 \end{frame}
 
-\begin{frame}{Different types of DRM}
+\begin{frame}{Other Examples of DRM}
 What types of DRM have you encountered? \\
 \bigskip
 Did they achieve their purpose? At a reasonable cost?\\
@@ -83,6 +92,33 @@ Did they achieve their purpose? At a reasonable cost?\\
 \item Detected tampering $\rightarrow$ invincible foes (Serious Sam 3)
 \item Amazon's remote deletion in 2009 of ``Nineteen Eighty-Four''
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{W3C: Encrypted Media Extensions (Draft, May 2013)}
+\footnotesize
+\begin{lstlisting}
+partial interface HTMLMediaElement {
+  readonly attribute MediaKeys keys;
+  void setMediaKeys(MediaKeys mediaKeys);
+  attribute EventHandler onneedkey;
+};
+[Constructor (DOMString keySystem)]
+interface MediaKeys {
+  readonly attribute DOMString keySystem;
+  MediaKeySession createSession(DOMString? type,Uint8Array? initData);
+  static bool isTypeSupported(DOMString type,DOMString keySystem);
+};
+interface MediaKeySession : EventTarget {
+  readonly attribute MediaKeyError? error;
+  readonly attribute DOMString keySystem;
+  readonly attribute DOMString sessionId;
+  void update(Uint8Array key);
+  void close();
+};
+\end{lstlisting}
+%partial interface HTMLSourceElement {
+%  attribute DOMString keySystem;
+%};
 \end{frame}
 
 \end{document}
