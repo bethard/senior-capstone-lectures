@@ -2,10 +2,10 @@
 \input{../common-definitions.tex}
 \usepackage{listings}
 \lstset{%
-basicstyle=\small\ttfamily\color{black},
+basicstyle=\footnotesize\ttfamily\color{black},
 commentstyle = \ttfamily\color{red},
 keywordstyle=\ttfamily\color{blue},
-stringstyle=\color{brown},
+stringstyle=\color{green!50!black},
 showstringspaces=false}
 
 
@@ -36,9 +36,8 @@ Spafford suggests that:
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{Is Hacking Voting Systems Ethical?}
-Attacking the Washington, D.C. Internet Voting System. \\
-Wolchok, Wustrow, Isabel, Halderman. 2012.
+\begin{frame}{Attacking the D.C. Internet Voting System}
+Wolchok, Wustrow, Isabel, Halderman (2012)
 \begin{itemize}
 \item D.C. Digital Vote-By-Mail System:
 \begin{itemize}
@@ -51,6 +50,7 @@ Wolchok, Wustrow, Isabel, Halderman. 2012.
 \item Focus on voter login, ballot upload, database use, network activity
 \end{itemize}
 \item Mock election held before real election
+\item Result: internet voting not used in real election
 \end{itemize}
 \end{frame}
 
@@ -66,6 +66,7 @@ run("gpg" , "--trust-model always
 \pause
 \item[] Name your file ``foo.\$(cmd)''
 \end{itemize}
+\bigskip
 \pause
 Attacks:
 \begin{itemize}
@@ -87,5 +88,14 @@ Attacks:
 \item Public network block: router, gateway, webcams, terminal server
 \item Default login and password in terminal server
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Was Hacking the D.C. Internet Voting System Ethical?}
+\begin{itemize}
+\item To Spafford? To a utilitarian?
+\bigskip
+\item Partially ethical? Which parts?
+\end{itemize}
+
 \end{frame}
 \end{document}
