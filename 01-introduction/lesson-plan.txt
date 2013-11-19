@@ -1,0 +1,8 @@
+* Self and student introductions
+  * Three things no one could guess by looking at you; the more obscure, the better. E.g.
+    * I lived in Belgium/the Netherlands for 3 years but never learned Dutch
+    * I implemented max(key=...) and the argparse module in the Python standard library
+    * My favorite food is Ethiopian food
+* Walk through syllabus, overview of topics
+* Discussion of sample ethical problem (in slides)
+* Brief history of computer ethics (in slides)
