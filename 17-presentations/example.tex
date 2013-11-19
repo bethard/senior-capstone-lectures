@@ -23,7 +23,10 @@
   xlabel={Scaled score},
   xmin=145,
   xmax=175,
-  xticklabel=\pgfmathprintnumber\tick--\pgfmathprintnumber\nexttick,
+  xticklabel={
+    \pgfmathprintnumber{\tick}%
+    --%
+    \pgfmathparse{\nexttick-1}\pgfmathprintnumber{\pgfmathresult}},
   width=\textwidth,
   height=0.8\textheight]
 \addplot+[hist={bins=6}]
@@ -47,7 +50,8 @@
   yticklabel style={align=right},
   ytick=data,
   bar width=0.5,
-  enlarge y limits=0.25]
+  enlarge y limits=0.25,
+  nodes near coords, nodes near coords align={horizontal}]
 \addplot coordinates {
   (61,3)
   (50,2)
