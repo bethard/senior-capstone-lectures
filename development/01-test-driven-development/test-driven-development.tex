@@ -1,0 +1,34 @@
+% !TEX TS-program = pdflatexmk
+
+\documentclass{beamer}
+\input{../../common-definitions.tex}
+
+\title{Test Driven Development}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Quiz}
+Which of the following did the study find? \hfill \textit{(Choose zero or more)}
+\begin{enumerate}[(A)]
+\item<1-2> Test-First programmers wrote more tests \visible<2->{\alert{(only at p=0.09!)}}
+\item<1> Test-First programmers produced higher quality programs
+\item<1> Test-First programmers were more productive
+\item<1> Writing more tests improved quality
+\item<1-2> Writing more tests increased productivity
+\end{enumerate}
+\medskip
+What is the biggest weakness of the study? \hfill \textit{(Choose one)}
+\begin{enumerate}[(A)]
+\item<1> The programming language used (Java) is strongly typed
+\item<1> The stories were artificially fine-grained
+\item<1-2> Only one type of programming task was used
+\item<1> The subjects were undergraduate computer science students
+\end{enumerate}
+\end{frame}
+
+\end{document}
