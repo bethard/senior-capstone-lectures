@@ -31,4 +31,62 @@ What is the biggest weakness of the study? \hfill \textit{(Choose one)}
 \end{enumerate}
 \end{frame}
 
+\begin{frame}{Testing Discussion}
+\begin{itemize}[<+->]
+\item Have you written tests for your code?
+\item If you have, were they Test-First or Test-Last?
+\item If you have, did they increase your productivity? Code quality?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Test-First Development vs. Test-Driven Development}
+Test-First Development:
+\begin{enumerate}
+\item\label{item:TFD:begin} Write a test and observe that it fails
+\begin{itemize}
+\item Where does the API come from?
+\end{itemize}
+\item Write code to make the test pass
+\begin{itemize}
+\item Code to meet requirements and for good design
+\end{itemize}
+\item Goto \ref{item:TFD:begin}
+\end{enumerate}
+
+\bigskip
+\pause
+Test-Driven Development
+\begin{enumerate}
+\item\label{item:TDD:begin} Write a test and observe that it fails
+\begin{itemize}
+\item API is developed via these tests!
+\end{itemize}
+\item Write the simplest code possible to make the test pass
+\begin{itemize}
+\item Focus is on meeting requirements
+\end{itemize}
+\item Refactor the code to improve the design
+\begin{itemize}
+\item Focus is on creating a good design
+\end{itemize}
+\item Goto \ref{item:TDD:begin}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Test-Driven Development}
+\centering
+\Huge TDD Demo
+\end{frame}
+
+\begin{frame}{Test-Driven Development Activity}
+\setbeamercovered{invisible}
+\centering
+Pick some other aspect of PacMan and write a test
+
+\pause
+\bigskip
+\noindent
+Now compare with your teammates. Are the APIs compatible?
+\end{frame}
+
 \end{document}
