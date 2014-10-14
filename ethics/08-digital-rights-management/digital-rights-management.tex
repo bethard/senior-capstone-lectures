@@ -6,7 +6,7 @@
 \lstdefinelanguage{W3C}{
   keywords={attribute, readonly, void, Constructor, interface, partial, static, bool},
   keywordstyle=\color{blue},
-  ndkeywords={HTMLSourceElement, HTMLMediaElement, EventHandler, MediaKeys, DOMString, Uint8Array, MediaKeySession, MediaKeyError, EventTarget},
+  ndkeywords={HTMLSourceElement, HTMLMediaElement, EventHandler, MediaKeys, DOMString, Uint8Array, MediaKeySession, MediaKeyError, EventTarget,IsTypeSupportedResult},
   ndkeywordstyle=\color{green!50!black},
   morecomment=[l]{//},
 }
@@ -59,10 +59,11 @@ Cory Doctorow explains that:
 %no recall but Sony promises to stop shipping root kit CDs
 %rootkit uninstaller allows attacker to reboot computer whenever you load a webpage
 \item Jul 2006: eMusic, DRM-free, is 2$^{\text{nd}}$ largest digital music service
-\item Feb 2007: Steve Jobs, ``\href{http://www.apple.com/ca/hotnews/thoughtsonmusic/}{Thoughts on Music}''
+\item Feb 2007: Steve Jobs, ``\href{http://www.apple.com/kr/hotnews/thoughtsonmusic/}{Thoughts on Music}''
+% "With the stunning global success of Apple?s iPod..."
 % big 4: Universal, Sony BMG, Warner and EMI
 % based on iTunes store sales and fullness of iPods: 97% of music is unprotected
-\item Mar 2007: \href{http://www.michaelgeist.ca/content/view/1826/125/}{DMCA author Bruce Lehman says DRM unsuccessful}
+\item Mar 2007: \href{http://www.michaelgeist.ca/2007/03/lehman-on-dmca/}{DMCA author Bruce Lehman says DRM unsuccessful}
 % teens don't have respect for copyright
 % new forms of patronage will replace DRM-based approaches
 \item Apr 2007: EMI music becomes DRM-free on iTunes
@@ -126,31 +127,42 @@ Did they achieve their purpose? At a reasonable cost?\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{W3C: Encrypted Media Extensions (Draft, May 2013)}
+\begin{frame}[fragile]{W3C: Encrypted Media Extensions (Draft, Aug 2014)}
 %http://www.w3.org/TR/encrypted-media/
 \footnotesize
 \begin{lstlisting}
 partial interface HTMLMediaElement {
-  readonly attribute MediaKeys keys;
-  void setMediaKeys(MediaKeys mediaKeys);
-  attribute EventHandler onneedkey;
+  readonly attribute MediaKeys? mediaKeys;
+  Promise<void> setMediaKeys(MediaKeys? mediaKeys);
+  attribute EventHandler onencrypted;
+  readonly attribute MediaWaitingFor waitingFor;
 };
-[Constructor (DOMString keySystem)]
 interface MediaKeys {
   readonly attribute DOMString keySystem;
-  MediaKeySession createSession(DOMString? type,Uint8Array? initData);
-  static bool isTypeSupported(DOMString type,DOMString keySystem);
-};
-interface MediaKeySession : EventTarget {
-  readonly attribute MediaKeyError? error;
-  readonly attribute DOMString keySystem;
-  readonly attribute DOMString sessionId;
-  void update(Uint8Array key);
-  void close();
+  Promise<MediaKeySession> createSession(
+    DOMString initDataType, (ArrayBuffer or ArrayBufferView) initData,
+    optional SessionType sessionType);
+  Promise<MediaKeySession> loadSession(DOMString sessionId);
+  Promise<void> setServerCertificate(
+    (ArrayBuffer or ArrayBufferView) serverCertificate);
+  static Promise<MediaKeys> create(DOMString keySystem);
+  static IsTypeSupportedResult isTypeSupported(
+     DOMString keySystem, optional DOMString initDataType,
+     optional DOMString contentType, optional DOMString capability);
 };
 \end{lstlisting}
-%partial interface HTMLSourceElement {
-%  attribute DOMString keySystem;
+%interface MediaKeySession : EventTarget {
+%  // session properties
+%  readonly attribute DOMString sessionId;
+%  readonly attribute unrestricted double expiration;
+%  readonly attribute Promise<void> closed;
+%
+%  // session operations
+%  Promise<void> update((ArrayBuffer or ArrayBufferView) response);
+%  Promise<void> close();
+%  Promise<void> remove();
+%  
+%  Promise<sequence<ArrayBuffer>> getUsableKeyIds();
 %};
 \end{frame}
 
