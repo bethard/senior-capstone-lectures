@@ -57,13 +57,14 @@ Wolchok, Wustrow, Isabel, Halderman (2012)
 \end{frame}
 
 \begin{frame}[fragile]{D.C. Internet Voting System Vulnerabilities}
+\setbeamercovered{invisible}
 Shell Injection (from using old copy from PaperClip library):
 \begin{itemize}
 \item[]
 \begin{lstlisting}[language=Ruby]
 run("gpg" , "--trust-model always
     -o \"#{File.expand_path(dst.path)}\" -e
-    -r \"#{@recipient}\" \"#{File .expand_path(src .path)}\"")
+    -r \"#{@recipient}\" \"#{File.expand_path(src.path)}\"")
 \end{lstlisting}
 \pause
 \item[] Name your file ``foo.\$(cmd)''
