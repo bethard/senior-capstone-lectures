@@ -127,43 +127,31 @@ Did they achieve their purpose? At a reasonable cost?\\
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{W3C: Encrypted Media Extensions (Draft, Aug 2014)}
+\begin{frame}[fragile]{W3C: Encrypted Media Extensions (Draft, Sep 2015)}
 %http://www.w3.org/TR/encrypted-media/
 \footnotesize
 \begin{lstlisting}
 partial interface HTMLMediaElement {
   readonly attribute MediaKeys? mediaKeys;
+           attribute EventHandler onencrypted;
   Promise<void> setMediaKeys(MediaKeys? mediaKeys);
-  attribute EventHandler onencrypted;
-  readonly attribute MediaWaitingFor waitingFor;
 };
 interface MediaKeys {
-  readonly attribute DOMString keySystem;
-  Promise<MediaKeySession> createSession(
-    DOMString initDataType, (ArrayBuffer or ArrayBufferView) initData,
-    optional SessionType sessionType);
-  Promise<MediaKeySession> loadSession(DOMString sessionId);
-  Promise<void> setServerCertificate(
-    (ArrayBuffer or ArrayBufferView) serverCertificate);
-  static Promise<MediaKeys> create(DOMString keySystem);
-  static IsTypeSupportedResult isTypeSupported(
-     DOMString keySystem, optional DOMString initDataType,
-     optional DOMString contentType, optional DOMString capability);
+  MediaKeySession createSession(optional MediaKeySessionType type);
+  Promise<void>   setServerCertificate(BufferSource serverCertificate);
+};
+interface MediaKeySession : EventTarget {
+  readonly attribute DOMString           sessionId;
+  readonly attribute unrestricted double expiration;
+  readonly attribute Promise<void>       closed;
+  readonly attribute MediaKeyStatusMap   keyStatuses;
+  Promise<void>    generateRequest(DOMString type, BufferSource data);
+  Promise<boolean> load(DOMString sessionId);
+  Promise<void>    update(BufferSource response);
+  Promise<void>    close();
+  Promise<void>    remove();
 };
 \end{lstlisting}
-%interface MediaKeySession : EventTarget {
-%  // session properties
-%  readonly attribute DOMString sessionId;
-%  readonly attribute unrestricted double expiration;
-%  readonly attribute Promise<void> closed;
-%
-%  // session operations
-%  Promise<void> update((ArrayBuffer or ArrayBufferView) response);
-%  Promise<void> close();
-%  Promise<void> remove();
-%  
-%  Promise<sequence<ArrayBuffer>> getUsableKeyIds();
-%};
 \end{frame}
 
 \begin{frame}{EME issues}
